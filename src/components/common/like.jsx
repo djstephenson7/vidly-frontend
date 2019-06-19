@@ -1,10 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Like extends Component {
-    state = {  }
-    render() { 
-        return (  );
-    }
-}
- 
+const Like = ({ onClick, liked }) => {
+  let classes = 'fa fa-heart';
+  if (!liked) classes += '-o';
+  return (
+    <i
+      onClick={onClick}
+      style={{ cursor: 'pointer' }}
+      className={classes}
+      aria-hidden="true"
+    />
+  );
+};
+
 export default Like;
