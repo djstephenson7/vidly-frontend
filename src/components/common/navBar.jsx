@@ -1,13 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const NavBar = () => {
   return (
     <React.Fragment>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <Link to="/" className="nav-item nav-link">
+        <NavLink to="/" className="nav-item nav-link">
           Vidly
-        </Link>
+        </NavLink>
         <button
           className="navbar-toggler"
           type="button"
@@ -21,15 +21,15 @@ const NavBar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-            <Link to="/movies" className="nav-item nav-link">
+            <NavLink to="/movies" className="nav-item nav-link">
               Movies
-            </Link>
-            <Link to="/customers" className="nav-item nav-link">
+            </NavLink>
+            <NavLink to="/customers" className="nav-item nav-link">
               Customers
-            </Link>
-            <Link to="/rentals" className="nav-item nav-link">
+            </NavLink>
+            <NavLink to="/rentals" className="nav-item nav-link">
               Rentals
-            </Link>
+            </NavLink>
           </div>
         </div>
       </nav>
