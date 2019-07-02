@@ -1,5 +1,5 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
   return (
@@ -32,6 +32,9 @@ const NavBar = () => {
             </NavLink>
             <NavLink to="/login" className="nav-item nav-link">
               Login
+            </NavLink>
+            <NavLink to="/register" className="nav-item nav-link">
+              Register
             </NavLink>
           </div>
         </div>
