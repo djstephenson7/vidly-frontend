@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
-import ListGroup from './common/listGroup';
-import MoviesTable from './moviesTable';
-import Pagination from './common/pagination';
-import { paginate } from '../utils/paginate';
-import { getMovies } from '../fakeBackend/fakeMovieService';
-import { getGenres } from '../fakeBackend/fakeGenreService';
-import _ from 'lodash';
+import React, { Component } from "react";
+import ListGroup from "./common/listGroup";
+import MoviesTable from "./moviesTable";
+import Pagination from "./common/pagination";
+import { Link } from "react-router-dom";
+import { paginate } from "../utils/paginate";
+import { getMovies } from "../fakeBackend/fakeMovieService";
+import { getGenres } from "../fakeBackend/fakeGenreService";
+import _ from "lodash";
 
 class Movies extends Component {
   state = {
@@ -13,11 +14,11 @@ class Movies extends Component {
     genres: [],
     pageSize: 4,
     currentPage: 1,
-    sortColumn: { path: 'title', order: 'asc' }
+    sortColumn: { path: "title", order: "asc" }
   };
 
   componentDidMount() {
-    const genres = [{ _id: '', name: 'All Genres' }, ...getGenres()];
+    const genres = [{ _id: "", name: "All Genres" }, ...getGenres()];
     this.setState({ movies: getMovies(), genres });
   }
 
@@ -87,6 +88,9 @@ class Movies extends Component {
           </div>
           <div className="col">
             <p>There are {totalCount} movies in the database</p>
+            <Link to="/movies/new">
+              <button className="btn-primary">New Movie</button>
+            </Link>
             <MoviesTable
               movies={movies}
               sortColumn={sortColumn}
