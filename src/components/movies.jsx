@@ -14,6 +14,8 @@ class Movies extends Component {
     movies: [],
     genres: [],
     pageSize: 4,
+    searchQuery: "",
+    selectedGenre: null,
     currentPage: 1,
     sortColumn: { path: "title", order: "asc" }
   };
@@ -24,7 +26,7 @@ class Movies extends Component {
   }
 
   handleGenreSelect = genre => {
-    this.setState({ selectedGenre: genre, currentPage: 1 });
+    this.setState({ selectedGenre: genre, searchQuery: "", currentPage: 1 });
   };
 
   handleDelete = movie => {
@@ -48,19 +50,27 @@ class Movies extends Component {
     this.setState({ currentPage: page });
   };
 
+  handleSearch = query => {
+    this.setState({ searchQuery: query, selectedGenre: null, currentPage: 1 });
+  };
+
   getPagedData = () => {
     const {
       pageSize,
       currentPage,
       sortColumn,
+      searchQuery,
       selectedGenre,
       movies: allMovies
     } = this.state;
 
-    const filtered =
-      selectedGenre && selectedGenre._id
-        ? allMovies.filter(m => m.genre._id === selectedGenre._id)
-        : allMovies;
+    let filtered = allMovies;
+    if (searchQuery)
+      filtered = allMovies.filter(m =>
+        m.title.toLowerCase().startsWith(searchQuery.toLowerCase())
+      );
+    else if (selectedGenre && selectedGenre._id)
+      filtered = allMovies.filter(m => m.genre._id === selectedGenre._id);
 
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
 
@@ -75,7 +85,7 @@ class Movies extends Component {
 
     if (count === 0) return <p>There are no movies in the database!</p>;
 
-    const { totalCount, data: movies } = this.getPagedData();
+    const { totalCount, data: movies, searchQuery } = this.getPagedData();
 
     return (
       <React.Fragment>
@@ -92,7 +102,7 @@ class Movies extends Component {
               <button className="btn btn-primary">New Movie</button>
             </Link>
             <p>There are {totalCount} movies in the database</p>
-            <SearchBar />
+            <SearchBar value={searchQuery} onChange={this.handleSearch} />
             <MoviesTable
               movies={movies}
               sortColumn={sortColumn}

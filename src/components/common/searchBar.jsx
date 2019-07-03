@@ -1,12 +1,14 @@
 import React from "react";
 
-const SearchBar = () => {
+const SearchBar = ({ value, onChange }) => {
   return (
     <input
-      type="search"
+      type="text"
+      name="query"
       className="form-control ds-input"
-      id="search-input"
       placeholder="Search..."
+      value={value}
+      onChange={e => onChange(e.currentTarget.value)}
     />
   );
 };
