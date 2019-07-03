@@ -18,8 +18,8 @@ class App extends Component {
       <div className="container">
         <NavBar />
         <Switch>
-          <Route path="movies/new" component={NewMovie} />
           <Route path="/movies/:id" component={MovieForm} />
+          <Route path="/newmovie" component={NewMovie} />
           <Route path="/login" component={LoginForm} />
           <Route path="/movies" component={Movies} />
           <Route path="/register" component={RegisterForm} />
