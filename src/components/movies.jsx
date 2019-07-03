@@ -7,6 +7,7 @@ import { paginate } from "../utils/paginate";
 import { getMovies } from "../fakeBackend/fakeMovieService";
 import { getGenres } from "../fakeBackend/fakeGenreService";
 import _ from "lodash";
+import SearchBar from "./common/searchBar";
 
 class Movies extends Component {
   state = {
@@ -87,10 +88,11 @@ class Movies extends Component {
             />
           </div>
           <div className="col">
-            <p>There are {totalCount} movies in the database</p>
             <Link to="/movies/new">
               <button className="btn btn-primary">New Movie</button>
             </Link>
+            <p>There are {totalCount} movies in the database</p>
+            <SearchBar />
             <MoviesTable
               movies={movies}
               sortColumn={sortColumn}
