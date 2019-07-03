@@ -10,7 +10,6 @@ import Home from "./components/home";
 import MovieForm from "./components/movieForm";
 import LoginForm from "./components/loginForm";
 import RegisterForm from "./components/registerForm";
-import NewMovie from "./components/newMovie";
 
 class App extends Component {
   render() {
@@ -18,8 +17,8 @@ class App extends Component {
       <div className="container">
         <NavBar />
         <Switch>
-          <Route path="/movies/:id" component={MovieForm} />
-          <Route path="/newmovie" component={NewMovie} />
+          <Route path="/movies/:id" exact component={MovieForm} />
+          <Route path="/movies/new" component={MovieForm} />
           <Route path="/login" component={LoginForm} />
           <Route path="/movies" component={Movies} />
           <Route path="/register" component={RegisterForm} />

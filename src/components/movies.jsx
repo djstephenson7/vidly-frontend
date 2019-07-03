@@ -88,8 +88,8 @@ class Movies extends Component {
           </div>
           <div className="col">
             <p>There are {totalCount} movies in the database</p>
-            <Link to="/newmovie">
-              <button className="btn-primary">New Movie</button>
+            <Link to="/movies/new">
+              <button className="btn btn-primary">New Movie</button>
             </Link>
             <MoviesTable
               movies={movies}
