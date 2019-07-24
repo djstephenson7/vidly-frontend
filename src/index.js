@@ -8,7 +8,7 @@ import "font-awesome/css/font-awesome.css";
 import { BrowserRouter } from "react-router-dom";
 import logger from "./fakeBackend/logService";
 
-logger.init();
+// logger.init();
 
 ReactDOM.render(
   <BrowserRouter>
