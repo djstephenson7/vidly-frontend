@@ -1,45 +1,57 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = ({ user }) => {
   return (
-    <React.Fragment>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <NavLink to="/" className="nav-item nav-link">
-          Vidly
-        </NavLink>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div className="navbar-nav">
-            <NavLink to="/movies" className="nav-item nav-link">
-              Movies
-            </NavLink>
-            <NavLink to="/customers" className="nav-item nav-link">
-              Customers
-            </NavLink>
-            <NavLink to="/rentals" className="nav-item nav-link">
-              Rentals
-            </NavLink>
-            <NavLink to="/login" className="nav-item nav-link">
-              Login
-            </NavLink>
-            <NavLink to="/register" className="nav-item nav-link">
-              Register
-            </NavLink>
-          </div>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <NavLink to="/" className="nav-item nav-link">
+        Vidly
+      </NavLink>
+      <button
+        className="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span className="navbar-toggler-icon" />
+      </button>
+      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div className="navbar-nav">
+          <NavLink to="/movies" className="nav-item nav-link">
+            Movies
+          </NavLink>
+          <NavLink to="/customers" className="nav-item nav-link">
+            Customers
+          </NavLink>
+          <NavLink to="/rentals" className="nav-item nav-link">
+            Rentals
+          </NavLink>
+          {!user && (
+            <React.Fragment>
+              <NavLink to="/login" className="nav-item nav-link">
+                Login
+              </NavLink>
+              <NavLink to="/register" className="nav-item nav-link">
+                Register
+              </NavLink>
+            </React.Fragment>
+          )}
+          {user && (
+            <React.Fragment>
+              <NavLink to="/profile" className="nav-item nav-link">
+                {user._id}
+              </NavLink>
+              <NavLink to="/logout" className="nav-item nav-link">
+                Logout
+              </NavLink>
+            </React.Fragment>
+          )}
         </div>
-      </nav>
-    </React.Fragment>
+      </div>
+    </nav>
   );
 };
 
