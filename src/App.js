@@ -11,6 +11,7 @@ import Home from "./components/home";
 import MovieForm from "./components/movieForm";
 import LoginForm from "./components/loginForm";
 import RegisterForm from "./components/registerForm";
+import Logout from "./components/logout";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
@@ -39,6 +40,7 @@ class App extends Component {
           <Route path="/rentals" component={Rentals} />
           <Route path="/not-found" component={NotFound} />
           <Route path="/" exact component={Home} />
+          <Route path="/logout" component={Logout} />
           <Redirect to="/not-found" />
         </Switch>
       </div>
