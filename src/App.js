@@ -23,12 +23,20 @@ class App extends Component {
     this.setState({ user });
   }
   render() {
+    const { user } = this.state;
     return (
       <div className="container">
         <ToastContainer />
-        <NavBar user={this.state.user} />
+        <NavBar user={user} />
         <Switch>
-          <Route path="/movies/:id" exact component={MovieForm} />
+          <Route
+            path="/movies/:id"
+            render={props => {
+              if (!user) return <Redirect to="/login" />;
+              return <MovieForm {...props} />;
+            }}
+          />
+
           <Route path="/movies/new" component={MovieForm} />
           <Route path="/login" component={LoginForm} />
           <Route
